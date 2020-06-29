@@ -1,14 +1,14 @@
-import pyttsx3
-import speech_recognition as sr
-import datetime
-import webbrowser
-import wikipedia
-import googlesearch as google
-import smtplib
+import pyttsx3  # pip install pyttsx3
+import speech_recognition as sr  # pip install SpeechRecognition
+import datetime  # preinstalled
+import webbrowser  # preinstalled
+import wikipedia  # pypi
+import googlesearch as google  # pip install google
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
+
 
 def speak(text):
     engine.say(text)
@@ -28,6 +28,7 @@ def wish_me():
         speak("Good Evening")
     speak("I am your Virtual Assistant. How can I help you?")
 
+
 def listen():
     r = sr.Recognizer()
 
@@ -44,6 +45,7 @@ def listen():
 
     return query
 
+
 if __name__ == '__main__':
     wish_me()
     while True:
@@ -59,7 +61,7 @@ if __name__ == '__main__':
             speak("According to Wikipedia")
             speak(result)
         elif 'open' in query:
-            options = {'google': 'google.com', 'stack overflow': 'stackoverflow.com', 'my website': 'educatemast.digital', 'dad facebook': 'facebook.com/satish.sharma.946'}
+            options = {'google': 'google.com', 'stack overflow': 'stackoverflow.com'}
             for key in options.keys():
                 if f'{key}' in query:
                     speak(f"Opening {key}")
@@ -73,20 +75,5 @@ if __name__ == '__main__':
         elif 'exit' in query:
             speak("It was fun while it lasted.... Bye")
             exit()
-
-        elif 'email' in query:
-            options = {'dad': 'techcrafteryt@gmail.com'}
-            for option in options.keys():
-                if f'{option}' in query:
-                    speak("What do you want to say?")
-                    content = listen()
-                    smtp = smtplib.SMTP('smtp.gmail.com', 587)
-                    smtp.ehlo()
-                    smtp.starttls()
-                    smtp.login('sahajemast@gmail.com', 'RealAstrology1234@google')
-                    smtp.sendmail('sahajemast@gmail.com', options.get(option), content)
-                    smtp.close()
-                    speak("Email sent.")
-
         else:
             speak("I am not sure what you mean by that...")

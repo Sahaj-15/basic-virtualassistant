@@ -1,3 +1,5 @@
+A very basic virtual assistant made with Python.
+----
 # Want to use this project for yourself?
 
 *I would highly appreciate if you would check this project, for your own learning purposes. I put no restrictions for you, to use this project.*
